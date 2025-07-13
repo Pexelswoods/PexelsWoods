@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيكسل وودز - منتجات خشبية مخصصة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tahoma', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000, #333);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        .logo-image svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ccc;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        radial-gradient(circle at center, #333, #000);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        .cta-button {
+            background: white;
+            color: #000;
+            padding: 15px 30px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #000;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #000;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border: 2px solid #000;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            height: 250px;
+            background: #f0f0f0;
+            border-bottom: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .custom-order-form {
+            background: white;
+            border: 2px solid #000;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: 'Tahoma', 'Arial', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: #f0f0f0;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .drawing-area {
+            border: 2px dashed #000;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            background: #f9f9f9;
+            margin-bottom: 20px;
+        }
+
+        .drawing-canvas {
+            border: 2px solid #000;
+            border-radius: 5px;
+            background: white;
+            cursor: crosshair;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .drawing-tools {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tool-btn {
+            padding: 8px 16px;
+            border: 2px solid #000;
+            background: white;
+            color: #000;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .tool-btn:hover,
+        .tool-btn.active {
+            background: #000;
+            color: white;
+        }
+
+        .file-upload {
+            border: 2px dashed #000;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background: #f9f9f9;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .file-upload:hover {
+            background: #f0f0f0;
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        .uploaded-files {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            background: white;
+            border: 1px solid #000;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remove-file {
+            color: #000;
+            cursor: pointer;
+            font-weight: bold;
+            background: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        .remove-file:hover {
+            background: #000;
+            color: white;
+        }
+
+        .submit-btn {
+            background: #000;
+            color: white;
+            padding: 15px 40px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: white;
+            color: #000;
+        }
+
+        .contact-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #000;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .contact-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .contact-modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            direction: rtl;
+        }
+
+        .close {
+            color: #000;
+            float: left;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #666;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .drawing-tools {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo-text {
+                font-size: 1.4rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-btn {
+                bottom: 20px;
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-image">
+                        <svg viewBox="0 0 1024 1024">
+                            <rect fill="#000" width="1024" height="1024"/>
+                            <rect fill="#fff" x="95" y="120" width="834" height="594"/>
+                            <rect fill="#000" x="304" y="120" width="32" height="32"/>
+                            <rect fill="#000" x="270" y="156" width="100" height="32"/>
+                            <rect fill="#000" x="236" y="192" width="168" height="32"/>
+                            <rect fill="#000" x="163" y="228" width="72" height="32"/>
+                            <rect fill="#000" x="127" y="264" width="40" height="32"/>
+                            <rect fill="#000" x="95" y="400" width="32" height="32"/>
+                            <rect fill="#000" x="127" y="436" width="64" height="32"/>
+                            <rect fill="#000" x="163" y="505" width="72" height="64"/>
+                            <rect fill="#000" x="236" y="540" width="100" height="32"/>
+                            <rect fill="#000" x="270" y="576" width="68" height="32"/>
+                            <rect fill="#000" x="304" y="612" width="32" height="32"/>
+                            <rect fill="#000" x="342" y="299" width="137" height="32"/>
+                            <rect fill="#000" x="547" y="299" width="137" height="32"/>
+                            <rect fill="#000" x="374" y="367" width="69" height="32"/>
+                            <rect fill="#000" x="581" y="367" width="69" height="32"/>
+                            <rect fill="#000" x="496" y="401" width="32" height="32"/>
+                            <rect fill="#000" x="462" y="470" width="100" height="32"/>
+                            <rect fill="#000" x="431" y="540" width="162" height="32"/>
+                            <rect fill="#000" x="688" y="120" width="32" height="32"/>
+                            <rect fill="#000" x="654" y="156" width="100" height="32"/>
+                            <rect fill="#000" x="620" y="192" width="168" height="32"/>
+                            <rect fill="#000" x="789" y="228" width="72" height="32"/>
+                            <rect fill="#000" x="825" y="264" width="40" height="32"/>
+                            <rect fill="#000" x="897" y="400" width="32" height="32"/>
+                            <rect fill="#000" x="833" y="436" width="64" height="32"/>
+                            <rect fill="#000" x="789" y="505" width="72" height="64"/>
+                            <rect fill="#000" x="688" y="540" width="100" height="32"/>
+                            <rect fill="#000" x="686" y="576" width="68" height="32"/>
+                            <rect fill="#000" x="688" y="612" width="32" height="32"/>
+                            <rect fill="#000" x="612" y="647" width="200" height="32"/>
+                            <rect fill="#000" x="645" y="683" width="134" height="32"/>
+                            <rect fill="#000" x="717" y="505" width="72" height="64"/>
+                            <rect fill="#000" x="781" y="540" width="32" height="32"/>
+                            <rect fill="#000" x="127" y="712" width="770" height="32"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">بيكسل وودز</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#custom-order">طلب مخصص</a></li>
+                        <li><a href="#contact">التواصل</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>منتجات خشبية مصنوعة بإتقان</h1>
+            <p>حول أفكارك إلى إبداعات خشبية جميلة ومخصصة</p>
+            <a href="#custom-order" class="cta-button">ابدأ طلبك المخصص</a>
+        </div>
+    </section>
+
+    <section id="products" class="section">
+        <div class="container">
+            <h2>منتجاتنا</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=250&fit=crop" alt="مكتب خشبي أنيق" onerror="this.style.display='none'; this.parentElement.innerHTML='🪑';">
+                    </div>
+                    <div class="product-info">
+                        <h3>مكاتب خشبية مخصصة</h3>
+                        <p>مكاتب عمل أنيقة مصنوعة من أجود أنواع الخشب، مصممة خصيصاً لاحتياجاتك.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=250&fit=crop" alt="غرفة معيشة خشبية" onerror="this.style.display='none'; this.parentElement.innerHTML='🏠';">
+                    </div>
+                    <div class="product-info">
+                        <h3>أثاث غرف المعيشة</h3>
+                        <p>طاولات قهوة، أرفف، وخزائن تلفزيون مصنوعة بحرفية عالية.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1549497538-303791108f95?w=400&h=250&fit=crop" alt="مساحة عمل منظمة" onerror="this.style.display='none'; this.parentElement.innerHTML='💻';">
+                    </div>
+                    <div class="product-info">
+                        <h3>مساحات العمل المنزلية</h3>
+                        <p>حلول تنظيم مبتكرة ومكاتب عمل مريحة للعمل من المنزل.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="custom-order" class="section">
+        <div class="container">
+            <h2>اطلب منتجك المخصص</h2>
+            <form class="custom-order-form" id="orderForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-type">نوع المنتج *</label>
+                        <select id="product-type" name="product-type" required>
+                            <option value="">اختر نوع المنتج</option>
+                            <option value="desk">مكتب</option>
+                            <option value="furniture">أثاث غرفة معيشة</option>
+                            <option value="workspace">مساحة عمل</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">وصف المشروع *</label>
+                    <textarea id="description" name="description" rows="4" placeholder="اوصف مشروعك بالتفصيل..." required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dimensions">الأبعاد</label>
+                        <input type="text" id="dimensions" name="dimensions" placeholder="مثال: 120 سم × 60 سم × 75 سم">
+                    </div>
+                    <div class="form-group">
+                        <label for="wood-type">نوع الخشب المفضل</label>
+                        <select id="wood-type" name="wood-type">
+                            <option value="">اختر نوع الخشب</option>
+                            <option value="oak">بلوط</option>
+                            <option value="pine">صنوبر</option>
+                            <option value="beech">زان</option>
+                            <option value="walnut">جوز</option>
+                            <option value="mdf">MDF</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>ارسم تصميمك</label>
+                    <div class="drawing-area">
+                        <p>اسكتش فكرتك أدناه أو ارفع صور مرجعية</p>
+                        <div class="drawing-tools">
+                            <button type="button" class="tool-btn active" data-tool="pen">✏️ قلم</button>
+                            <button type="button" class="tool-btn" data-tool="eraser">🧹 ممحاة</button>
+                            <button type="button" class="tool-btn" data-color="#000000">⚫ أسود</button>
+                            <button type="button" class="tool-btn" data-color="#666666">⚪ رمادي</button>
+                            <button type="button" class="tool-btn" id="clear-canvas">🗑️ مسح</button>
+                        </div>
+                        <canvas id="drawingCanvas" class="drawing-canvas" width="600" height="400"></canvas>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>ارفع ملفات مرجعية</label>
+                    <div class="file-upload" id="fileUpload">
+                        <div class="upload-icon">📁</div>
+                        <p>انقر لرفع الملفات أو اسحبها هنا</p>
+                        <p style="font-size: 0.9rem; color: #666;">الصيغ المدعومة: JPG, PNG, PDF, DWG</p>
+                        <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.pdf,.dwg">
+                    </div>
+                    <div class="uploaded-files" id="uploadedFiles"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="budget">نطاق الميزانية</label>
+                        <select id="budget" name="budget">
+                            <option value="">اختر نطاق الميزانية</option>
+                            <option value="under-500">أقل من 500 ريال</option>
+                            <option value="500-1500">500 - 1500 ريال</option>
+                            <option value="1500-3000">1500 - 3000 ريال</option>
+                            <option value="3000-5000">3000 - 5000 ريال</option>
+                            <option value="over-5000">أكثر من 5000 ريال</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeline">مطلوب بتاريخ</label>
+                        <input type="date" id="timeline" name="timeline">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional-notes">ملاحظات إضافية</label>
+                    <textarea id="additional-notes" name="additional-notes" rows="3" placeholder="أي متطلبات خاصة أو معلومات إضافية..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">إرسال طلب التصميم المخصص</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Button -->
+    <button class="contact-btn" onclick="openContactModal()">
+        💬 تواصل معنا
+    </button>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeContactModal()">&times;</span>
+            <h2>تواصل معنا</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contact-email">بريدك الإلكتروني *</label>
+                    <input type="email" id="contact-email" name="contact-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">رسالتك *</label>
+                    <textarea id="message" name="message" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">إرسال الرسالة</button>
+            </form>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>تواصل معنا</h3>
+                    <p>📧 alanziuji@gmail.com</p>
+                    <p>🌐 www.pexelswoods.com</p>
+                </div>
+                <div>
+                    <h3>ساعات العمل</h3>
+                    <p>الأحد - الخميس: 8 صباحاً - 6 مساءً</p>
+                    <p>الجمعة: 2 مساءً - 10 مساءً</p>
+                    <p>السبت: مغلق</p>
+                </div>
+            </div>
+            <p>&copy; 2025 بيكسل وودز. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Drawing functionality
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let currentTool = 'pen';
+        let currentColor = '#000000';
+        let currentLineWidth = 3;
+
+        canvas.width = 600;
+        canvas.height = 400;
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        canvas.addEventListener('touchstart', handleTouch);
+        canvas.addEventListener('touchmove', handleTouch);
+        canvas.addEventListener('touchend', stopDrawing);
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            ctx.lineWidth = currentLineWidth;
+            ctx.lineCap = 'round';
+            
+            if (currentTool === 'pen') {
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.strokeStyle = currentColor;
+            } else if (currentTool === 'eraser') {
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.lineWidth = 10;
+            }
+            
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+            ctx.beginPath();
+        }
+
+        function handleTouch(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 
+                                           e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }
+
+        // Tool selection
+        document.querySelectorAll('.tool-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.dataset.tool) {
+                    currentTool = this.dataset.tool;
+                    document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                } else if (this.dataset.color) {
+                    currentColor = this.dataset.color;
+                    currentTool = 'pen';
+                    document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelector('[data-tool="pen"]').classList.add('active');
+                } else if (this.id === 'clear-canvas') {
+                    ctx
